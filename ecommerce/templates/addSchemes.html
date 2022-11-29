@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+    <div class="container">
+        <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+<div class="form-group">
+                    {{ form.scheme1.label }}
+                    {% if form.scheme1.errors %}
+                        {{ form.scheme1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme1}}
+                    {% endif %}
+                    {{ form.scheme1_received.label }}
+                    {% if form.scheme1_received.errors %}
+                        {{ form.scheme1_received(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme1_received.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme1_received}}
+                    {% endif %}
+					{{ form.scheme1_benefits.label }}
+                    {% if form.scheme1_benefits.errors %}
+                        {{ form.scheme1_benefits(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme1_benefits.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme1_benefits}}
+                    {% endif %}
+</div>
+
+<div class="form-group">
+                    {{ form.scheme2.label }}
+                    {% if form.scheme2.errors %}
+                        {{ form.scheme2(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme2.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme2}}
+                    {% endif %}
+					{{ form.scheme2_received.label }}
+                    {% if form.scheme2_received.errors %}
+                        {{ form.scheme2_received(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme2_received.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme2_received}}
+                    {% endif %}
+
+                    {{ form.scheme2_benefits.label }}
+                    {% if form.scheme2_benefits.errors %}
+                        {{ form.scheme2_benefits(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme2_benefits.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme2_benefits}}
+                    {% endif %}
+</div>
+<div class="form-group">
+                    {{ form.scheme3.label }}
+                    {% if form.scheme3.errors %}
+                        {{ form.scheme3(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme3.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme3}}
+                    {% endif %}
+
+					{{ form.scheme3_received.label }}
+                    {% if form.scheme3_received.errors %}
+                        {{ form.scheme3_received(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme3_received.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme3_received}}
+                    {% endif %}
+
+                    {{ form.scheme3_benefits.label }}
+                    {% if form.scheme3_benefits.errors %}
+                        {{ form.scheme3_benefits(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme3_benefits.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme3_benefits}}
+                    {% endif %}
+</div>
+<div class="form-group">
+                    {{ form.scheme4.label }}
+                    {% if form.scheme4.errors %}
+                        {{ form.scheme4(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme4.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme4}}
+                    {% endif %}
+
+					{{ form.scheme4_received.label }}
+                    {% if form.scheme4_received.errors %}
+                        {{ form.scheme4_received(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme4_received.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme4_received}}
+                    {% endif %}
+
+                    {{ form.scheme4_benefits.label }}
+                    {% if form.scheme4_benefits.errors %}
+                        {{ form.scheme4_benefits(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme4_benefits.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme4_benefits}}
+                    {% endif %}
+</div>
+<div class="form-group">
+                    {{ form.scheme5.label }}
+                    {% if form.scheme5.errors %}
+                        {{ form.scheme5(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme5.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme5}}
+                    {% endif %}
+
+					{{ form.scheme5_received.label }}
+                    {% if form.scheme5_received.errors %}
+                        {{ form.scheme5_received(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme5_received.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme5_received}}
+                    {% endif %}
+
+                    {{ form.scheme5_benefits.label }}
+                    {% if form.scheme5_benefits.errors %}
+                        {{ form.scheme5_benefits(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.scheme5_benefits.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.scheme5_benefits}}
+                    {% endif %}
+</div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+
+        </form>
+    </div>
+{% endblock content %}

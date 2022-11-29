@@ -1,0 +1,8 @@
+mysql_host: 'localhost'
+mysql_user: 'root'
+# Enter your password in field below
+mysql_password: 'root'
+mysql_db: 'grocart'
+
+userProductRecommendationServiceUrl : 'http://127.0.0.1:8000/predictuser'
+#userProductRecommendationServiceUrl : 'http://internal-ros-rs-lb-2023148986.us-east-1.elb.amazonaws.com:8000/predictuser'
