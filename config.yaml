@@ -1,7 +1,7 @@
-mysql_host: 'localhost'
+mysql_host: 'persuasiontalks.cum3xyoigbqw.ap-south-1.rds.amazonaws.com'
 mysql_user: 'root'
 # Enter your password in field below
-mysql_password: 'root'
+mysql_password: 'rootroot'
 mysql_db: 'grocart'
 
 userProductRecommendationServiceUrl : 'http://127.0.0.1:8000/predictuser'
