@@ -86,6 +86,7 @@ pickleshare==0.7.5
 Pillow==9.0.1
 Pillow-PIL==0.1.dev0
 platformdirs==2.5.4
+plotly==5.6.0
 prompt-toolkit==3.0.28
 protobuf==3.19.4
 psutil==5.9.0
