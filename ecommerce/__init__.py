@@ -14,8 +14,8 @@ import yaml
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/talkhoods'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:rootroot@persuasiontalks.cum3xyoigbqw.ap-south-1.rds.amazonaws.com/talkhoods'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/talkhoods'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:rootroot@persuasiontalks.cum3xyoigbqw.ap-south-1.rds.amazonaws.com/talkhoods'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 0
 app.config['SQLALCHEMY_POOL_SIZE'] = 20
