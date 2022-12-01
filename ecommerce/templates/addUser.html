@@ -5,6 +5,18 @@
         <form action="" method="POST" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
             <div class="form-group">
+                    {{ form.image.label }}
+                    {% if form.image.errors %}
+                        {{ form.image(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.image.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.image}}
+                    {% endif %}
+            </div>            <div class="form-group">
                     {{ form.survey_start_place.label }}
                     {% if form.survey_start_place.errors %}
                         {{ form.survey_start_place(class="form-control form-control-lg is-invalid") }}

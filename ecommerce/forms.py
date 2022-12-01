@@ -16,6 +16,7 @@ from ecommerce.models import *
 
 
 class addUserForm(FlaskForm):
+    image = FileField('Bulk Upload Products')
     survey_start_place = StringField('Survey Place:')
     name = StringField('Name:', validators=[DataRequired()])
     user_mobile_number = StringField('Mobile Number:')

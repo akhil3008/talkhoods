@@ -33,7 +33,7 @@ def login():
             return redirect(url_for('admin'))
         else:
             error = 'Invalid UserId / Password'
-            return render_template('login.html')
+            return render_template('login.html', error=error)
 
 
 @app.route("/logout")
@@ -78,18 +78,18 @@ def root():
 
 
 # yet to be added
-# def save_picture(form_picture):
-#     random_hex = secrets.token_hex(8)
-#     _, f_ext = os.path.splitext(form_picture.filename)
-#     picture_fn = random_hex + f_ext
-#     picture_path = os.path.join(app.root_path, 'static/uploads', picture_fn)
-#
-#     output_size = (250, 250)
-#     i = Image.open(form_picture)
-#     i.thumbnail(output_size)
-#     i.save(picture_path)
-#
-#     return picture_fn
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/uploads', picture_fn)
+
+    output_size = (250, 250)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
 
 
 @app.route("/admin", methods=['GET'])
@@ -108,7 +108,8 @@ def addUser():
     if isUserAdmin():
         form = addUserForm()
         form.category.choices = [(row.casteid, row.caste_name) for row in Caste.query.all()]
-
+        if form.image.data:
+            icon = save_picture(form.image.data)
         if form.validate_on_submit():
             if form.number_of_visits_current.data == "":
                 form.number_of_visits_current.data = 0
@@ -116,7 +117,7 @@ def addUser():
             if form.number_of_visits_ex.data == "":
                 form.number_of_visits_ex.data = 0
 
-            userdata = user_talks(survey_start_place=form.survey_start_place.data, name=form.name.data,
+            userdata = user_talks(image=icon,survey_start_place=form.survey_start_place.data, name=form.name.data,
                                   user_mobile_number=form.user_mobile_number.data, email=form.email.data,
                                   village_name=form.village_name.data, constituency=form.constituency.data,
                                   state=form.state.data, caste=form.category.data,

@@ -182,10 +182,12 @@ span.psw {
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
 
+        <span style="color:red"> {{ error }} </span>
       <button type="submit">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me </input>
 </label>
+
     </div>
 <!--    <div class="container" style="background-color:#f1f1f1">-->
 <!--&lt;!&ndash;      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>&ndash;&gt;-->

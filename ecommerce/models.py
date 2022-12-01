@@ -30,6 +30,7 @@ class User(db.Model):
 class user_talks(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String(1000), nullable=False)
     survey_start_place = db.Column(db.String(50))
     name = db.Column(db.String(50))
     user_mobile_number = db.Column(db.String(12))
