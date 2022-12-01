@@ -167,27 +167,32 @@ def addSchemes():
                                                    scheme=1, eligible=form.scheme1.data,
                                                    received=form.scheme1_received.data,
                                                    benefits=form.scheme1_benefits.data,
-                                                   benefits_other=form.scheme1_benefits_other.data)
+                                                   benefits_other=form.scheme1_benefits_other.data,
+                                                   remarks=form.scheme1_remarks.data)
                 scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=2, eligible=form.scheme2.data,
                                                    received=form.scheme2_received.data,
                                                    benefits=form.scheme2_benefits.data,
-                                                   benefits_other=form.scheme2_benefits_other.data)
+                                                   benefits_other=form.scheme2_benefits_other.data,
+                                                   remarks=form.scheme2_remarks.data)
                 scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=3, eligible=form.scheme3.data,
                                                    received=form.scheme3_received.data,
                                                    benefits=form.scheme3_benefits.data,
-                                                   benefits_other=form.scheme3_benefits_other.data)
+                                                   benefits_other=form.scheme3_benefits_other.data,
+                                                   remarks=form.scheme3_remarks.data)
                 scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=4, eligible=form.scheme4.data,
                                                    received=form.scheme4_received.data,
                                                    benefits=form.scheme4_benefits.data,
-                                                   benefits_other=form.scheme4_benefits_other.data)
+                                                   benefits_other=form.scheme4_benefits_other.data,
+                                                   remarks=form.scheme4_remarks.data)
                 scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=5, eligible=form.scheme5.data,
                                                    received=form.scheme5_received.data,
                                                    benefits=form.scheme5_benefits.data,
-                                                   benefits_other=form.scheme5_benefits_other.data)
+                                                   benefits_other=form.scheme5_benefits_other.data,
+                                                   remarks=form.scheme5_remarks.data)
                 db.session.add(scheme1_userdata)
                 db.session.commit()
                 db.session.add(scheme2_userdata)
@@ -249,27 +254,32 @@ def addSchemes():
                                                    scheme=1,
                                                    eligible=form.scheme1.data,
                                                    received=form.scheme1_received.data,
-                                                   benefits=form.scheme1_benefits.data)
+                                                   benefits=form.scheme1_benefits.data,
+                                                   remarks=form.scheme1_remarks.data)
                 scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=2,
                                                    eligible=form.scheme2.data,
                                                    received=form.scheme2_received.data,
-                                                   benefits=form.scheme2_benefits.data)
+                                                   benefits=form.scheme2_benefits.data,
+                                                   remarks=form.scheme2_remarks.data)
                 scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=3,
                                                    eligible=form.scheme3.data,
                                                    received=form.scheme3_received.data,
-                                                   benefits=form.scheme3_benefits.data)
+                                                   benefits=form.scheme3_benefits.data,
+                                                   remarks=form.scheme3_remarks.data)
                 scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=4,
                                                    eligible=form.scheme4.data,
                                                    received=form.scheme4_received.data,
-                                                   benefits=form.scheme4_benefits.data)
+                                                   benefits=form.scheme4_benefits.data,
+                                                   remarks=form.scheme4_remarks.data)
                 scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
                                                    scheme=5,
                                                    eligible=form.scheme5.data,
                                                    received=form.scheme5_received.data,
-                                                   benefits=form.scheme5_benefits.data)
+                                                   benefits=form.scheme5_benefits.data,
+                                                   remarks=form.scheme5_remarks.data)
                 db.session.add(scheme1_userdata)
                 db.session.commit()
                 db.session.add(scheme2_userdata)

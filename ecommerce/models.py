@@ -81,9 +81,11 @@ class scheme_benefits(db.Model):
     received = db.Column(db.String(3))
     benefits = db.Column(db.String(1000))
     benefits_other = db.Column(db.String(1000))
+    remarks = db.Column(db.String(1000))
 
     def __repr__(self):
-        return f"scheme_benefits('{self.participant_name}','{self.state}',,'{self.scheme}','{self.eligible}', '{self.received}',  '{self.benefits}')"
+        return f"scheme_benefits('{self.participant_name}','{self.state}',,'{self.scheme}', \
+        '{self.eligible}', '{self.received}',  '{self.benefits},  '{self.benefits_other},  '{self.remarks}')"
 
 class Caste(db.Model):
     __table_args__ = {'extend_existing': True}
