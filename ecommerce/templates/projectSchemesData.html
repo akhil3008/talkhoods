@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+<br>
+    <div class="container">
+        <form action="" method=["GET","POST"] enctype="multipart/form-data">
+            <div class="form-group">
+                <table border="1">
+                    <tr>
+                        <th style="width:300px"> Scheme </th>
+                        <th style="width:100px"> Eligible </th>
+                        <th style="width:100px"> Received </th>
+                        <th style="width:240px"> Benefits_Supporting_Party </th>
+                        <th style="width:200px"> Benefits_Others </th>
+                        <th style="width:100px"> Difference </th>
+                    </tr>
+                    <tr>
+                        <td> {{ schemes_data_dict["1"]  }} </td>
+                        <td> {{ scheme_data_dict[scheme1_data_dict["eligible"]] }} </td>
+                        <td> {{ scheme_data_dict[scheme1_data_dict["received"]] }} </td>
+                        <td> {{ scheme1_data_dict["benefits"] }} </td>
+                        <td> {{ scheme1_data_dict["benefits_other"] }} </td>
+                        <td> {{ scheme1_data_dict["diff"]  }} </td>
+                    </tr>
+                        <td> {{ schemes_data_dict["2"]  }} </td>
+                        <td> {{ scheme_data_dict[scheme2_data_dict["eligible"]] }} </td>
+                        <td> {{ scheme_data_dict[scheme2_data_dict["received"]] }} </td>
+                        <td> {{ scheme2_data_dict["benefits"] }} </td>
+                        <td> {{ scheme2_data_dict["benefits_other"] }} </td>
+                        <td> {{ scheme2_data_dict["diff"] }} </td>
+                    </tr>
+                        <td> {{ schemes_data_dict["3"]  }} </td>
+                        <td> {{ scheme_data_dict[scheme3_data_dict["eligible"]] }} </td>
+                        <td> {{ scheme_data_dict[scheme3_data_dict["received"]] }} </td>
+                        <td> {{ scheme3_data_dict["benefits"] }} </td>
+                        <td> {{ scheme3_data_dict["benefits_other"] }} </td>
+                        <td> {{ scheme3_data_dict["diff"] }} </td>
+                    </tr>
+                        <td> {{ schemes_data_dict["4"]  }} </td>
+                        <td> {{ scheme_data_dict[scheme4_data_dict["eligible"]] }} </td>
+                        <td> {{ scheme_data_dict[scheme4_data_dict["received"]] }} </td>
+                        <td> {{ scheme4_data_dict["benefits"] }} </td>
+                        <td> {{ scheme4_data_dict["benefits_other"] }} </td>
+                        <td> {{ scheme4_data_dict["diff"] }} </td>
+                    </tr>
+                        <td> {{ schemes_data_dict["5"]  }} </td>
+                        <td> {{ scheme_data_dict[scheme5_data_dict["eligible"]] }} </td>
+                        <td> {{ scheme_data_dict[scheme5_data_dict["received"]] }} </td>
+                        <td> {{ scheme5_data_dict["benefits"] }} </td>
+                        <td> {{ scheme5_data_dict["benefits_other"] }} </td>
+                        <td> {{ scheme5_data_dict["diff"] }} </td>
+                    </tr>
+                    <tr>
+                        <th colspan="3"> Total </th>
+                        <th> {{ scheme1_data_dict["benefits"] + scheme2_data_dict["benefits"] + scheme3_data_dict["benefits"] + scheme4_data_dict["benefits"] + scheme5_data_dict["benefits"] }} </th>
+                        <th> {{ scheme1_data_dict["benefits_other"] + scheme2_data_dict["benefits_other"] + scheme3_data_dict["benefits_other"] + scheme4_data_dict["benefits_other"] + scheme5_data_dict["benefits_other"] }} </th>
+                        <th id="diff"> {{ scheme1_data_dict["diff"] + scheme2_data_dict["diff"] + scheme3_data_dict["diff"] + scheme4_data_dict["diff"] + scheme5_data_dict["diff"] }} </th>
+                    </tr>
+                  </table>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

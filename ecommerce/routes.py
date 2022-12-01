@@ -40,7 +40,7 @@ def login():
 def logout():
     session.pop('email', None)
     session.pop('firstname', None)
-    return redirect(url_for('root'))
+    return redirect(url_for('home'))
 
 
 @app.route("/registerationForm")
@@ -131,11 +131,11 @@ def addUser():
                                   number_of_visits_ex=form.number_of_visits_ex.data,
                                   future_contestents=form.future_contestents.data, expectations=form.expectations.data,
                                   head_of_each_caste_name=form.head_of_each_caste_name.data,
-                                  caste_head_mobile_number=form.caste_head_mobile_number.data,
+                                  caste_head_mobile_number=form.caste_head_mobile_number.data, survey_taken_by=session['email'],
                                   created_on=now())
             db.session.add(userdata)
             db.session.commit()
-            print(form.name.data)
+
             session['participant_name'] = form.name.data
             if session['participant_name'] == "":
                 session['participant_name'] = form.name.data
@@ -151,9 +151,11 @@ def addUser():
                 session['state'] = form.state.data
 
             flash(f'user_talks {form.name} added successfully', 'success')
-            return render_template("admin.html")
+            # return render_template("admin.html")
+            return redirect(url_for('addSchemes'))
         return render_template("addUser.html", form=form, legend="New Product")
     return redirect(url_for('root'))
+
 
 @app.route("/admin/user/schemes", methods=['GET', 'POST'])
 def addSchemes():
@@ -161,19 +163,111 @@ def addSchemes():
         if session['state'] == "2":
             form = addschemeForm()
             if form.validate_on_submit():
-                scheme1_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=1, eligible=form.scheme1.data,
+                scheme1_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=1, eligible=form.scheme1.data,
+                                                   received=form.scheme1_received.data,
+                                                   benefits=form.scheme1_benefits.data,
+                                                   benefits_other=form.scheme1_benefits_other.data)
+                scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=2, eligible=form.scheme2.data,
+                                                   received=form.scheme2_received.data,
+                                                   benefits=form.scheme2_benefits.data,
+                                                   benefits_other=form.scheme2_benefits_other.data)
+                scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=3, eligible=form.scheme3.data,
+                                                   received=form.scheme3_received.data,
+                                                   benefits=form.scheme3_benefits.data,
+                                                   benefits_other=form.scheme3_benefits_other.data)
+                scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=4, eligible=form.scheme4.data,
+                                                   received=form.scheme4_received.data,
+                                                   benefits=form.scheme4_benefits.data,
+                                                   benefits_other=form.scheme4_benefits_other.data)
+                scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=5, eligible=form.scheme5.data,
+                                                   received=form.scheme5_received.data,
+                                                   benefits=form.scheme5_benefits.data,
+                                                   benefits_other=form.scheme5_benefits_other.data)
+                db.session.add(scheme1_userdata)
+                db.session.commit()
+                db.session.add(scheme2_userdata)
+                db.session.commit()
+                db.session.add(scheme3_userdata)
+                db.session.commit()
+                db.session.add(scheme4_userdata)
+                db.session.commit()
+                db.session.add(scheme5_userdata)
+                db.session.commit()
+
+                schemes_data_dict = {}
+                scheme1_data_dict = {}
+                scheme2_data_dict = {}
+                scheme3_data_dict = {}
+                scheme4_data_dict = {}
+                scheme5_data_dict = {}
+                scheme_data_dict = {}
+
+                schemes_data_dict["1"] = "Annadata Sukhibava"
+                schemes_data_dict["2"] = "Pasupu Kunkuma"
+                schemes_data_dict["3"] = "Pensioners"
+                schemes_data_dict["4"] = "Ammaki Vandanam"
+                schemes_data_dict["5"] = "Unemployment"
+                scheme_data_dict["1"] = "Yes"
+                scheme_data_dict["0"] = "No"
+
+                scheme1_data_dict["eligible"] = form.scheme1.data
+                scheme1_data_dict["received"] = form.scheme1_received.data
+                scheme1_data_dict["benefits"] = int(form.scheme1_benefits.data)
+                scheme1_data_dict["benefits_other"] = int(form.scheme1_benefits_other.data)
+                scheme1_data_dict["diff"] = scheme1_data_dict["benefits"] - scheme1_data_dict["benefits_other"]
+                scheme2_data_dict["eligible"] = form.scheme2.data
+                scheme2_data_dict["received"] = form.scheme2_received.data
+                scheme2_data_dict["benefits"] = int(form.scheme2_benefits.data)
+                scheme2_data_dict["benefits_other"] = int(form.scheme2_benefits_other.data)
+                scheme2_data_dict["diff"] = scheme2_data_dict["benefits"] - scheme2_data_dict["benefits_other"]
+                scheme3_data_dict["eligible"] = form.scheme3.data
+                scheme3_data_dict["received"] = form.scheme3_received.data
+                scheme3_data_dict["benefits"] = int(form.scheme3_benefits.data)
+                scheme3_data_dict["benefits_other"] = int(form.scheme3_benefits_other.data)
+                scheme3_data_dict["diff"] = scheme3_data_dict["benefits"] - scheme3_data_dict["benefits_other"]
+                scheme4_data_dict["eligible"] = form.scheme4.data
+                scheme4_data_dict["received"] = form.scheme4_received.data
+                scheme4_data_dict["benefits"] = int(form.scheme4_benefits.data)
+                scheme4_data_dict["benefits_other"] = int(form.scheme4_benefits_other.data)
+                scheme4_data_dict["diff"] = scheme4_data_dict["benefits"] - scheme4_data_dict["benefits_other"]
+                scheme5_data_dict["eligible"] = form.scheme5.data
+                scheme5_data_dict["received"] = form.scheme5_received.data
+                scheme5_data_dict["benefits"] = int(form.scheme5_benefits.data)
+                scheme5_data_dict["benefits_other"] = int(form.scheme5_benefits_other.data)
+                scheme5_data_dict["diff"] = scheme5_data_dict["benefits"] - scheme5_data_dict["benefits_other"]
+
+                return render_template("projectSchemesData.html", scheme_data_dict=scheme_data_dict, schemes_data_dict=schemes_data_dict, scheme1_data_dict=scheme1_data_dict, scheme2_data_dict=scheme2_data_dict, scheme3_data_dict=scheme3_data_dict, scheme4_data_dict=scheme4_data_dict, scheme5_data_dict=scheme5_data_dict)
+        else:
+            form = addschemeFormTS()
+            if form.validate_on_submit():
+                scheme1_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=1,
+                                                   eligible=form.scheme1.data,
                                                    received=form.scheme1_received.data,
                                                    benefits=form.scheme1_benefits.data)
-                scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=2, eligible=form.scheme2.data,
+                scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=2,
+                                                   eligible=form.scheme2.data,
                                                    received=form.scheme2_received.data,
                                                    benefits=form.scheme2_benefits.data)
-                scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=3, eligible=form.scheme3.data,
+                scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=3,
+                                                   eligible=form.scheme3.data,
                                                    received=form.scheme3_received.data,
                                                    benefits=form.scheme3_benefits.data)
-                scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=4, eligible=form.scheme4.data,
+                scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=4,
+                                                   eligible=form.scheme4.data,
                                                    received=form.scheme4_received.data,
                                                    benefits=form.scheme4_benefits.data)
-                scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=5, eligible=form.scheme5.data,
+                scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], state=session['state'],
+                                                   scheme=5,
+                                                   eligible=form.scheme5.data,
                                                    received=form.scheme5_received.data,
                                                    benefits=form.scheme5_benefits.data)
                 db.session.add(scheme1_userdata)
@@ -186,41 +280,49 @@ def addSchemes():
                 db.session.commit()
                 db.session.add(scheme5_userdata)
                 db.session.commit()
-                return render_template("admin.html")
-            else:
-                form = addschemeForm()
-                if form.validate_on_submit():
-                    scheme1_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=1,
-                                                       eligible=form.scheme1.data,
-                                                       received=form.scheme1_received.data,
-                                                       benefits=form.scheme1_benefits.data)
-                    scheme2_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=2,
-                                                       eligible=form.scheme2.data,
-                                                       received=form.scheme2_received.data,
-                                                       benefits=form.scheme2_benefits.data)
-                    scheme3_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=3,
-                                                       eligible=form.scheme3.data,
-                                                       received=form.scheme3_received.data,
-                                                       benefits=form.scheme3_benefits.data)
-                    scheme4_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=4,
-                                                       eligible=form.scheme4.data,
-                                                       received=form.scheme4_received.data,
-                                                       benefits=form.scheme4_benefits.data)
-                    scheme5_userdata = scheme_benefits(participant_name=session['participant_name'], scheme=5,
-                                                       eligible=form.scheme5.data,
-                                                       received=form.scheme5_received.data,
-                                                       benefits=form.scheme5_benefits.data)
-                    db.session.add(scheme1_userdata)
-                    db.session.commit()
-                    db.session.add(scheme2_userdata)
-                    db.session.commit()
-                    db.session.add(scheme3_userdata)
-                    db.session.commit()
-                    db.session.add(scheme4_userdata)
-                    db.session.commit()
-                    db.session.add(scheme5_userdata)
-                    db.session.commit()
-                    return render_template("addSchemes.html", form=form, legend="Schemes")
+                schemes_data_dict = {}
+                scheme1_data_dict = {}
+                scheme2_data_dict = {}
+                scheme3_data_dict = {}
+                scheme4_data_dict = {}
+                scheme5_data_dict = {}
+                scheme_data_dict = {}
+
+                schemes_data_dict["1"] = "KCR Kit"
+                schemes_data_dict["2"] = "Arogya Lakshmi"
+                schemes_data_dict["3"] = "Aasara pensions"
+                schemes_data_dict["4"] = "Housing for the poor"
+                schemes_data_dict["5"] = "Unemployment"
+                scheme_data_dict["1"] = "Yes"
+                scheme_data_dict["0"] = "No"
+
+                scheme1_data_dict["eligible"] = form.scheme1.data
+                scheme1_data_dict["received"] = form.scheme1_received.data
+                scheme1_data_dict["benefits"] = int(form.scheme1_benefits.data)
+                scheme1_data_dict["benefits_other"] = int(form.scheme1_benefits_other.data)
+                scheme1_data_dict["diff"] = scheme1_data_dict["benefits"] - scheme1_data_dict["benefits_other"]
+                scheme2_data_dict["eligible"] = form.scheme2.data
+                scheme2_data_dict["received"] = form.scheme2_received.data
+                scheme2_data_dict["benefits"] = int(form.scheme2_benefits.data)
+                scheme2_data_dict["benefits_other"] = int(form.scheme2_benefits_other.data)
+                scheme2_data_dict["diff"] = scheme2_data_dict["benefits"] - scheme2_data_dict["benefits_other"]
+                scheme3_data_dict["eligible"] = form.scheme3.data
+                scheme3_data_dict["received"] = form.scheme3_received.data
+                scheme3_data_dict["benefits"] = int(form.scheme3_benefits.data)
+                scheme3_data_dict["benefits_other"] = int(form.scheme3_benefits_other.data)
+                scheme3_data_dict["diff"] = scheme3_data_dict["benefits"] - scheme3_data_dict["benefits_other"]
+                scheme4_data_dict["eligible"] = form.scheme4.data
+                scheme4_data_dict["received"] = form.scheme4_received.data
+                scheme4_data_dict["benefits"] = int(form.scheme4_benefits.data)
+                scheme4_data_dict["benefits_other"] = int(form.scheme4_benefits_other.data)
+                scheme4_data_dict["diff"] = scheme4_data_dict["benefits"] - scheme4_data_dict["benefits_other"]
+                scheme5_data_dict["eligible"] = form.scheme5.data
+                scheme5_data_dict["received"] = form.scheme5_received.data
+                scheme5_data_dict["benefits"] = int(form.scheme5_benefits.data)
+                scheme5_data_dict["benefits_other"] = int(form.scheme5_benefits_other.data)
+                scheme5_data_dict["diff"] = scheme5_data_dict["benefits"] - scheme5_data_dict["benefits_other"]
+
+                return render_template("projectSchemesData.html", scheme_data_dict=scheme_data_dict, schemes_data_dict=schemes_data_dict, scheme1_data_dict=scheme1_data_dict, scheme2_data_dict=scheme2_data_dict, scheme3_data_dict=scheme3_data_dict, scheme4_data_dict=scheme4_data_dict, scheme5_data_dict=scheme5_data_dict)
         return render_template("addSchemes.html", form=form, legend="Schemes")
     return redirect(url_for('root'))
 
@@ -236,7 +338,6 @@ def getUsers():
         users = cur.fetchall()
         return render_template('adminUsers.html', users=users)
     return redirect(url_for('root'))
-
 
 
 @app.route("/profile", methods=['GET', 'POST'])
@@ -301,7 +402,7 @@ def extractAndPersistUserDataFromForm(request):
     phone = request.form['phone']
 
     user = User(fname=firstName, lname=lastName, password=hashlib.md5(password.encode()).hexdigest(), address=address,
-                city=city, state=state, country=country, zipcode=zipcode, email=email, phone=phone)
+                city=city, state=state, country=country, zipcode=zipcode, email=email, phone=phone, isadmin=1)
 
     try:
         db.session.add(user)

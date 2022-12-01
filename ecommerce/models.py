@@ -58,6 +58,7 @@ class user_talks(db.Model):
     expectations = db.Column(db.String(500))
     head_of_each_caste_name = db.Column(db.String(200))
     caste_head_mobile_number = db.Column(db.String(12))
+    survey_taken_by = db.Column(db.String(200))
     created_on = db.Column(db.DateTime)
 
     def __repr__(self):
@@ -68,12 +69,13 @@ class user_talks(db.Model):
         '{self.water}','{self.houses}','{self.land_allotments}','{self.current_mla}', \
         '{self.number_of_visits_current}','{self.issues}','{self.ex_mla}','{self.number_of_visits_ex}', \
         '{self.future_contestents}','{self.expectations}','{self.head_of_each_caste_name}',\
-        '{self.caste_head_mobile_number}','{self.created_on}')"
+        '{self.caste_head_mobile_number}','{self.survey_taken_by}','{self.created_on}')"
 
 class scheme_benefits(db.Model):
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     participant_name = db.Column(db.String(100))
+    state = db.Column(db.String(100))
     scheme = db.Column(db.Integer)
     eligible = db.Column(db.String(3))
     received = db.Column(db.String(3))
@@ -81,7 +83,7 @@ class scheme_benefits(db.Model):
     benefits_other = db.Column(db.String(1000))
 
     def __repr__(self):
-        return f"scheme_benefits('{self.participant_name}','{self.scheme}','{self.eligible}', '{self.received}',  '{self.benefits}')"
+        return f"scheme_benefits('{self.participant_name}','{self.state}',,'{self.scheme}','{self.eligible}', '{self.received}',  '{self.benefits}')"
 
 class Caste(db.Model):
     __table_args__ = {'extend_existing': True}

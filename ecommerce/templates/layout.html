@@ -14,6 +14,20 @@
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/main.css') }}>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+	<style>
+	.positive {
+	  background-color: green;
+	}
+	.negative {
+	  background-color: red;
+	}
+	</style>
+	<script>
+		$(document).ready(function() {
+			var diff = $("#diff").text();
+			$('#diff').html(diff).addClass(diff > 0 ? 'positive' : 'negative');
+		});
+	</script>
 </head>
 <body class="animsition">
 	<div class="header1">
@@ -37,9 +51,9 @@
 									<li>
 										<a href="{{ url_for('addUser') }}">Add Participant</a>
 									</li>
-									<li>
-										<a href="{{ url_for('addSchemes') }}">Scheme Benefits </a>
-									</li>
+<!--									<li>-->
+<!--										<a href="{{ url_for('addSchemes') }}">Scheme Benefits </a>-->
+<!--									</li>-->
 									<li>
 										<a href="{{ url_for('logout') }}">Logout</a>
 									</li>

@@ -13,15 +13,13 @@
                         <th style="width:100px"> Received </th>
                         <th style="width:240px"> Benefits_Supporting_Party </th>
                         <th style="width:100px"> Benefits_Others </th>
-<!--                        <th style="width:100px"> Difference </th>-->
                     </tr>
                     <tr>
                         <td> {{ form.scheme1.label }} </td>
                         <td> {{ form.scheme1}} </td>
                         <td> {{ form.scheme1_received}} </td>
-                        <td id="score"> {{ form.scheme1_benefits}} </td>
-                        <td id="benchmark"> {{ form.scheme1_benefits_other }} </td>
-                        <td id="diff"></td>
+                        <td> {{ form.scheme1_benefits}} </td>
+                        <td> {{ form.scheme1_benefits_other }} </td>
                     </tr>
                     <tr>
                         <td> {{ form.scheme2.label }} </td>
@@ -51,9 +49,6 @@
                         <td> {{ form.scheme5_benefits}} </td>
                         <td> {{ form.scheme5_benefits_other }} </td>
                     </tr>
-<!--                    <tr>-->
-<!--                        <th colspan="3" align="center"> Total </th>-->
-<!--                    </tr>-->
                  </table>
             </div>
             {{ form.submit(class="btn btn-outline-info") }}
