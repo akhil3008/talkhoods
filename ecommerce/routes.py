@@ -83,9 +83,10 @@ def save_picture(form_picture):
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
 
-    picture_path = os.path.join('/tmp/static/uploads/', picture_fn)
-    # picture_path = os.path.join(app.root_path, 'static/uploads', picture_fn)
+    picture_path = os.path.join(app.instance_path, 'static/uploads', picture_fn)
+    picture_path1 = os.path.join(app.root_path, 'static/uploads', picture_fn)
     print(picture_path)
+    print(picture_path1)
 
     output_size = (250, 250)
     i = Image.open(form_picture)
