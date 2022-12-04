@@ -82,9 +82,10 @@ def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
-
-    picture_path = os.path.join(app.instance_path, 'static/uploads', picture_fn)
-    picture_path1 = os.path.join(app.root_path, 'static/uploads', picture_fn)
+    image_path = "/tmp/"
+    os.mkdir(image_path)
+    picture_path = os.path.join(f"{image_path}, picture_fn")
+    picture_path1 = os.path.join('/', picture_fn)
     print(picture_path)
     print(picture_path1)
 
@@ -92,6 +93,7 @@ def save_picture(form_picture):
     i = Image.open(form_picture)
     i.thumbnail(output_size)
     i.save(picture_path)
+    i.save(picture_path1)
 
     return picture_fn
 
