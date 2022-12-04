@@ -82,18 +82,13 @@ def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
-    # image_path = "/tmp/"
-    # os.mkdir(image_path)
-    # picture_path = os.path.join(f"{image_path}, picture_fn")
-    picture_path1 = os.path.join(app.root_path, 'static/uploads', picture_fn)
-    # print(picture_path)
-    print(picture_path1)
+    picture_path = os.path.join(app.root_path, 'static/uploads', picture_fn)
+    print(picture_path)
 
     output_size = (250, 250)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
-    # i.save(picture_path)
-    i.save(picture_path1)
+    i.save(picture_path)
 
     return picture_fn
 
@@ -123,7 +118,7 @@ def addUser():
             if form.number_of_visits_ex.data == "":
                 form.number_of_visits_ex.data = 0
 
-            userdata = user_talks(image=icon,survey_start_place=form.survey_start_place.data, name=form.name.data,
+            userdata = user_talks(image=icon, survey_start_place=form.survey_start_place.data, name=form.name.data,
                                   user_mobile_number=form.user_mobile_number.data, email=form.email.data,
                                   village_name=form.village_name.data, constituency=form.constituency.data,
                                   state=form.state.data, caste=form.category.data,
